@@ -589,14 +589,14 @@ angular.module('ntt.TreeDnD')
                                 var _data,
                                     _len,
                                     _tree_nodes = [];
-                                console.log('---------');
+                                
                                 if (angular.isDefined(oData)) {
-                                    if (!angular.isArray(oData) || oData.length === 0) {
+                                    if (!angular.isArray(oData)) {
                                         return [];
                                     } else {
                                         _data = oData;
                                     }
-                                } else if (!angular.isArray(scope.treeData) || scope.treeData.length === 0) {
+                                } else if (!angular.isArray(scope.treeData)) {
                                     return [];
                                 } else {
                                     _data = scope.treeData;
