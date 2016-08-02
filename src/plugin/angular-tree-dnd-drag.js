@@ -445,7 +445,7 @@ angular.module('ntt.TreeDnD')
                                     var _prev = targetScope.getPrevSibling(_target);
 
                                     _move.parent = _parent;
-                                    _move.pos = angular.isDefined(_prev) ? _prev.__index__ + 1 : 0;
+                                    _move.pos = angular.__isDefined(_prev) ? _prev.__index__ + 1 : 0;
 
                                     _drop = _prev;
                                 } else {
@@ -542,7 +542,7 @@ angular.module('ntt.TreeDnD')
                                 $TreeDnDHelper.replaceIndent(
                                     treeScope,
                                     $params.placeElm,
-                                    angular.isUndefinedOrNull(_move.parent) ? 1 : _move.parent.__level__ + 1
+                                    angular.__isUndefinedOrNull(_move.parent) ? 1 : _move.parent.__level__ + 1
                                 );
 
                                 if (_drop) {

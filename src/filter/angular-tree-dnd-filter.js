@@ -14,7 +14,7 @@ angular.module('ntt.TreeDnD')
                         _nodePassed = fnBefore(options, node),
                         _childPassed = false;
 
-                    if (angular.isDefined(node[fieldChild])) {
+                    if (angular.__isDefined(node[fieldChild])) {
                         _nodes = node[fieldChild];
                         _len = _nodes.length;
                         for (_i = 0; _i < _len; _i++) {
@@ -37,7 +37,7 @@ angular.module('ntt.TreeDnD')
                 },
                 // Check data by filter
                 _fnCheck = function _fnCheck(callback, check) {
-                    if (angular.isUndefinedOrNull(check) || angular.isArray(check)) {
+                    if (angular.__isUndefinedOrNull(check) || angular.isArray(check)) {
                         return null;
                     }
 
@@ -47,7 +47,7 @@ angular.module('ntt.TreeDnD')
                         if (typeof callback === 'boolean') {
                             check = !!check;
                             return check === callback;
-                        } else if (angular.isDefined(callback)) {
+                        } else if (angular.__isDefined(callback)) {
                             try {
                                 var _regex = new RegExp(callback);
                                 return _regex.test(check);
@@ -80,7 +80,7 @@ angular.module('ntt.TreeDnD')
                                     return true;
                                 }
                             }
-                        } else if (angular.isDefined(node[_key])) {
+                        } else if (angular.__isDefined(node[_key])) {
                             return _fnCheck(_callback, node[_key]);
                         }
                     }

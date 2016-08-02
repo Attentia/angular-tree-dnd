@@ -31,11 +31,11 @@
  */
 (function () {
     'use strict';
-    angular.isUndefinedOrNull = function (val) {
+    angular.__isUndefinedOrNull = function (val) {
         return angular.isUndefined(val) || val === null;
     }
 
-    angular.isDefined = function (val) {
+    angular.__isDefined = function (val) {
         return !(angular.isUndefined(val) || val === null);
     }
 
