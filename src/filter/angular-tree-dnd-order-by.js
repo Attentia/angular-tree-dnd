@@ -6,7 +6,7 @@ angular.module('ntt.TreeDnD')
                 for_all_descendants = function for_all_descendants(options, node, name, fnOrderBy) {
                     var _i, _len, _nodes;
 
-                    if (angular.__isDefined(node[name])) {
+                    if (window.TreeDnd.IsDefined(node[name])) {
                         _nodes = node[name];
                         _len = _nodes.length;
                         // OrderBy children

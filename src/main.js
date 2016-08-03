@@ -31,12 +31,15 @@
  */
 (function () {
     'use strict';
-    angular.__isUndefinedOrNull = function (val) {
-        return angular.isUndefined(val) || val === null;
-    }
 
-    angular.__isDefined = function (val) {
-        return !(angular.isUndefined(val) || val === null);
+    window.TreeDnD = {
+        IsUndefinedOrNull: function (val) {
+            return angular.isUndefined(val) || val === null;
+        },
+
+        IsDefined: function (val) {
+            return !(angular.isUndefined(val) || val === null);
+        }
     }
 
     angular.module('ntt.TreeDnD', ['template/TreeDnD/TreeDnD.html']).constant(
@@ -58,4 +61,4 @@
         }
     );//<!--Replace_Concat-->
 
-}).call(window);
+})(window);
