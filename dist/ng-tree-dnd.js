@@ -284,7 +284,7 @@
                         };
 
                         $scope.onClick = function (node) {
-                            if (window.TreeDnd.IsDefined($scope.tree) && angular.isFunction($scope.tree.on_click)) {
+                            if (window.TreeDnD.IsDefined($scope.tree) && angular.isFunction($scope.tree.on_click)) {
                                 // We want to detach from Angular's digest cycle so we can
                                 // independently measure the time for one cycle.
                                 setTimeout(
@@ -296,7 +296,7 @@
                         };
 
                         $scope.onSelect = function (node) {
-                            if (window.TreeDnd.IsDefined($scope.tree)) {
+                            if (window.TreeDnD.IsDefined($scope.tree)) {
                                 if (node !== $scope.tree.selected_node) {
                                     $scope.tree.select_node(node);
                                 }
@@ -445,7 +445,7 @@
                                             if (info.target.$callbacks.accept(info, info.move, info.changed)) {
                                                 if (isMove) {
                                                     _parent = _parentRemove;
-                                                    if (window.TreeDnd.IsDefined(_parent.__children__)) {
+                                                    if (window.TreeDnD.IsDefined(_parent.__children__)) {
                                                         _parent = _parent.__children__;
                                                     }
 
@@ -558,7 +558,7 @@
                                 if (node && node.__index__ > 0) {
                                     var _parent, _index = node.__index__ - 1;
 
-                                    if (window.TreeDnd.IsDefined(node.__parent_real__)) {
+                                    if (window.TreeDnD.IsDefined(node.__parent_real__)) {
                                         _parent = $scope.tree_nodes[node.__parent_real__];
                                         return _parent.__children__[_index];
                                     }
@@ -569,7 +569,7 @@
                             };
 
                             $scope.getNode = function (index) {
-                                if (window.TreeDnd.IsUndefinedOrNull(index)) {
+                                if (window.TreeDnD.IsUndefinedOrNull(index)) {
                                     return null;
                                 }
                                 return $scope.tree_nodes[index];
@@ -697,7 +697,7 @@
                                     }
 
                                     // Auto get first
-                                    if (window.TreeDnd.IsUndefinedOrNull(scope.expandingProperty)) {
+                                    if (window.TreeDnD.IsUndefinedOrNull(scope.expandingProperty)) {
                                         scope.expandingProperty = _keys[0];
                                     }
 
@@ -737,7 +737,7 @@
                                 node.__parent__ = parent;
                                 _len = node.__children__.length;
 
-                                if (window.TreeDnd.IsUndefinedOrNull(node.__expanded__) && _len > 0) {
+                                if (window.TreeDnD.IsUndefinedOrNull(node.__expanded__) && _len > 0) {
                                     node.__expanded__ = level < scope.expandLevel;
                                 }
 
@@ -758,7 +758,7 @@
                                 node.__icon__ = _icon;
                                 node.__visible__ = !!visible;
 
-                                if (window.TreeDnd.IsUndefinedOrNull(node.__uid__)) {
+                                if (window.TreeDnD.IsUndefinedOrNull(node.__uid__)) {
                                     node.__uid__ = "" + Math.random();
                                 }
 
@@ -782,7 +782,7 @@
 
                                 _hashKey = scope.getHash(node);
 
-                                if (window.TreeDnd.IsUndefinedOrNull(node.__hashKey__) || node.__hashKey__ !== _hashKey) {
+                                if (window.TreeDnD.IsUndefinedOrNull(node.__hashKey__) || node.__hashKey__ !== _hashKey) {
                                     node.__hashKey__ = _hashKey;
                                     // delete(scope.$globals[_hashKey]);
                                 }
@@ -796,7 +796,7 @@
                                     _len,
                                     _tree_nodes = [];
                                 
-                                if (window.TreeDnd.IsDefined(oData)) {
+                                if (window.TreeDnD.IsDefined(oData)) {
                                     if (!angular.isArray(oData)) {
                                         return [];
                                     } else {
@@ -816,7 +816,7 @@
                                     getColDefs();
                                 }
 
-                                if (window.TreeDnd.IsDefined(scope.orderBy)) {
+                                if (window.TreeDnD.IsDefined(scope.orderBy)) {
                                     if (!angular.isFunction(_fnInitOrderBy)) {
                                         _fnInitOrderBy = $TreeDnDPlugin('$TreeDnDOrderBy');
                                     }
@@ -826,7 +826,7 @@
                                     }
                                 }
 
-                                if (window.TreeDnd.IsDefined(scope.filter)) {
+                                if (window.TreeDnD.IsDefined(scope.filter)) {
                                     if (!angular.isFunction(_fnInitFilter)) {
                                         _fnInitFilter = $TreeDnDPlugin('$TreeDnDFilter');
                                     }
@@ -861,7 +861,7 @@
                                 }
 
                                 // clear memory
-                                if (window.TreeDnd.IsDefined(scope.tree_nodes)) {
+                                if (window.TreeDnD.IsDefined(scope.tree_nodes)) {
                                     delete(scope.tree_nodes);
                                 }
 
@@ -875,7 +875,7 @@
                             },
                             tree,
                             check_exist_attr = function (attrs, existAttr, isAnd) {
-                                if (window.TreeDnd.IsUndefinedOrNull(existAttr)) {
+                                if (window.TreeDnD.IsUndefinedOrNull(existAttr)) {
                                     return false;
                                 }
 
@@ -1009,12 +1009,12 @@
                                     [
                                         ['object', 'string'], 'expandOn', getExpandOn, 'expandingProperty', getExpandOn,
                                         function (expandOn) {
-                                            if (window.TreeDnd.IsUndefinedOrNull(expandOn)) {
+                                            if (window.TreeDnD.IsUndefinedOrNull(expandOn)) {
                                                 scope.expandingProperty = attrs.expandOn;
                                             }
                                         }],
                                     [
-                                        'object', 'treeControl', window.TreeDnd.IsDefined(scope.tree) ? scope.tree : {},
+                                        'object', 'treeControl', window.TreeDnD.IsDefined(scope.tree) ? scope.tree : {},
                                         'tree', null, function ($tree) {
 
                                         if (!angular.isFunction(_fnGetControl)) {
@@ -1031,7 +1031,7 @@
                                     [
                                         ['array', 'object'], 'columnDefs', getColDefs, 'colDefinitions', getColDefs,
                                         function (colDefs) {
-                                            if (window.TreeDnd.IsUndefinedOrNull(colDefs) || !angular.isArray(colDefs)) {
+                                            if (window.TreeDnD.IsUndefinedOrNull(colDefs) || !angular.isArray(colDefs)) {
                                                 scope.colDefinitions = getColDefs();
                                             }
                                         }],
@@ -1039,7 +1039,7 @@
                                     [
                                         ['object', 'array'], 'filter', null, 'filter', null, function (filters) {
                                         var _passed = false;
-                                        if (window.TreeDnd.IsDefined(filters) && !angular.isArray(filters)) {
+                                        if (window.TreeDnD.IsDefined(filters) && !angular.isArray(filters)) {
                                             var _keysF = Object.keys(filters),
                                                 _lenF = _keysF.length, _iF;
 
@@ -1328,7 +1328,7 @@
 ).factory(
     '$TreeDnDPlugin',['$injector', function ($injector) {
         var _fnget = function (name) {
-                if (window.TreeDnd.IsDefined($injector) && $injector.has(name)) {
+                if (window.TreeDnD.IsDefined($injector) && $injector.has(name)) {
                     return $injector.get(name);
                 }
                 return null;
@@ -1396,7 +1396,7 @@
                         _nodePassed = fnBefore(options, node),
                         _childPassed = false;
 
-                    if (window.TreeDnd.IsDefined(node[fieldChild])) {
+                    if (window.TreeDnD.IsDefined(node[fieldChild])) {
                         _nodes = node[fieldChild];
                         _len = _nodes.length;
                         for (_i = 0; _i < _len; _i++) {
@@ -1419,7 +1419,7 @@
                 },
                 // Check data by filter
                 _fnCheck = function _fnCheck(callback, check) {
-                    if (window.TreeDnd.IsUndefinedOrNull(check) || angular.isArray(check)) {
+                    if (window.TreeDnD.IsUndefinedOrNull(check) || angular.isArray(check)) {
                         return null;
                     }
 
@@ -1429,7 +1429,7 @@
                         if (typeof callback === 'boolean') {
                             check = !!check;
                             return check === callback;
-                        } else if (window.TreeDnd.IsDefined(callback)) {
+                        } else if (window.TreeDnD.IsDefined(callback)) {
                             try {
                                 var _regex = new RegExp(callback);
                                 return _regex.test(check);
@@ -1462,7 +1462,7 @@
                                     return true;
                                 }
                             }
-                        } else if (window.TreeDnd.IsDefined(node[_key])) {
+                        } else if (window.TreeDnD.IsDefined(node[_key])) {
                             return _fnCheck(_callback, node[_key]);
                         }
                     }
@@ -1586,7 +1586,7 @@
                 for_all_descendants = function for_all_descendants(options, node, name, fnOrderBy) {
                     var _i, _len, _nodes;
 
-                    if (window.TreeDnd.IsDefined(node[name])) {
+                    if (window.TreeDnD.IsDefined(node[name])) {
                         _nodes = node[name];
                         _len = _nodes.length;
                         // OrderBy children
@@ -2073,7 +2073,7 @@
                                     var _prev = targetScope.getPrevSibling(_target);
 
                                     _move.parent = _parent;
-                                    _move.pos = window.TreeDnd.IsDefined(_prev) ? _prev.__index__ + 1 : 0;
+                                    _move.pos = window.TreeDnD.IsDefined(_prev) ? _prev.__index__ + 1 : 0;
 
                                     _drop = _prev;
                                 } else {
@@ -2170,7 +2170,7 @@
                                 $TreeDnDHelper.replaceIndent(
                                     treeScope,
                                     $params.placeElm,
-                                    window.TreeDnd.IsUndefinedOrNull(_move.parent) ? 1 : _move.parent.__level__ + 1
+                                    window.TreeDnD.IsUndefinedOrNull(_move.parent) ? 1 : _move.parent.__level__ + 1
                                 );
 
                                 if (_drop) {
