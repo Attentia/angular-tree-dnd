@@ -15,6 +15,7 @@
   "name": "angular-tree-dnd",
   "version": "3.0.4",
   "homepage": "http://thienhung1989.github.io/angular-tree-dnd/",
+  "main": "dist/ng-tree-dnd",
   "dependencies": {
     "angular": ">=1.2"
   },
