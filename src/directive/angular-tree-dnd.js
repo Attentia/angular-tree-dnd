@@ -561,7 +561,7 @@ angular.module('ntt.TreeDnD')
                                 node.__icon__ = _icon;
                                 node.__visible__ = !!visible;
                                 node.__is_parent__ = _is_parent;
-                                node.__selected_styling_enabled__ = $scope.selectedStylingEnabled;
+                                node.__selected_styling_enabled__ = scope.selectedStylingEnabled;
 
                                 if (window.TreeDnD.IsUndefinedOrNull(node.__uid__)) {
                                     node.__uid__ = "" + Math.random();

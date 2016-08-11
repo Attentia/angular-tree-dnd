@@ -244,6 +244,8 @@
                             }
                         );
 
+                        $scope.selectedStylingEnabled = ($attrs.selectedStylingEnabled || 'true').toLowerCase() === 'true';
+
                         $scope.for_all_descendants = function (node, fn) {
                             if (angular.isFunction(fn)) {
                                 var _i, _len, _nodes;
@@ -750,6 +752,13 @@
                                         _icon = 0;
                                     }
                                 }
+
+                                var _is_parent = false;
+
+                                if (_len !== 0) {
+                                    _is_parent = !_is_parent;
+                                }
+
                                 // Insert item vertically
                                 _index_real = root.length;
                                 node.__index__ = index;
@@ -757,6 +766,8 @@
                                 node.__level__ = level;
                                 node.__icon__ = _icon;
                                 node.__visible__ = !!visible;
+                                node.__is_parent__ = _is_parent;
+                                node.__selected_styling_enabled__ = scope.selectedStylingEnabled;
 
                                 if (window.TreeDnD.IsUndefinedOrNull(node.__uid__)) {
                                     node.__uid__ = "" + Math.random();
@@ -2780,7 +2791,7 @@ angular.module('template/TreeDnD/TreeDnD.html', []).run(
              "    </thead>",
              " <tbody tree-dnd-nodes=\"tree_nodes\">",
              "  <tr tree-dnd-node=\"node\" ng-repeat=\"node in nodes track by node.__hashKey__ \" ng-show=\"node.__visible__\"",
-             "       ng-click=\"onSelect(node)\" ng-class=\"(node.__selected__ ? ' active':'')\">",
+             "       ng-click=\"onSelect(node)\" ng-class=\"{'active': node.__selected__ && node.__selected_styling_enabled__, 'tree-dnd-parent-node': node.__is_parent__}\">",
              "        <td ng-if=\"!expandingProperty.template\" tree-dnd-node-handle",
              "         ng-style=\"expandingProperty.cellStyle ? expandingProperty.cellStyle : {'padding-left': $callbacks.calsIndent(node.__level__)}\"",
              "          ng-class=\"expandingProperty.cellClass\"",
@@ -2788,8 +2799,8 @@ angular.module('template/TreeDnD/TreeDnD.html', []).run(
              "              <a data-nodrag>",
              "                  <i ng-class=\"$icon_class\" ng-click=\"toggleExpand(node)\"",
              "                     class=\"tree-icon\"></i>",
+             "                  {{node[expandingProperty.field] || node[expandingProperty]}}",
              "              </a>",
-             "             {{node[expandingProperty.field] || node[expandingProperty]}}",
              "       </td>",
              "        <td ng-if=\"expandingProperty.template\" compile=\"expandingProperty.template\"></td>",
              "        <td ng-repeat=\"col in colDefinitions\" ng-class=\"col.cellClass\" ng-style=\"col.cellStyle\"",
