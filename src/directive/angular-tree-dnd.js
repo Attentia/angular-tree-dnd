@@ -38,6 +38,8 @@ angular.module('ntt.TreeDnD')
                             }
                         );
 
+                        $scope.selectedStylingEnabled = ($attrs.selectedStylingEnabled || 'true').toLowerCase() === 'true';
+
                         $scope.for_all_descendants = function (node, fn) {
                             if (angular.isFunction(fn)) {
                                 var _i, _len, _nodes;
@@ -544,6 +546,13 @@ angular.module('ntt.TreeDnD')
                                         _icon = 0;
                                     }
                                 }
+
+                                var _is_parent = false;
+
+                                if (_len !== 0) {
+                                    _is_parent = !_is_parent;
+                                }
+
                                 // Insert item vertically
                                 _index_real = root.length;
                                 node.__index__ = index;
@@ -551,6 +560,8 @@ angular.module('ntt.TreeDnD')
                                 node.__level__ = level;
                                 node.__icon__ = _icon;
                                 node.__visible__ = !!visible;
+                                node.__is_parent__ = _is_parent;
+                                node.__selected_styling_enabled__ = $scope.selectedStylingEnabled;
 
                                 if (window.TreeDnD.IsUndefinedOrNull(node.__uid__)) {
                                     node.__uid__ = "" + Math.random();
